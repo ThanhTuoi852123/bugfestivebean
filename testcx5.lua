@@ -169,7 +169,6 @@ local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
 request(abcdef)
 
 end)
-local HttpService = game:GetService("HttpService")
     local tuoidz3 = (function()
         if MyAccount then
             local ddr = game:GetService("Players").LocalPlayer.Data.DevilFruit.Value
