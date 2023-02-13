@@ -165,7 +165,7 @@ local HttpService = game:GetService("HttpService")
         end
     end)
 spawn(function()
-    while wait(1000) do
+    while wait(300) do
         tuoidz3()
     end
 end)
