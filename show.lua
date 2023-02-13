@@ -142,7 +142,6 @@ elseif game.PlaceId == sea2 then
 elseif game.PlaceId == sea3 then
     checksea = "Sea 3"
 end
-local HttpService = game:GetService("HttpService")
     local tuoidz3 = (function()
         if MyAccount then
             local ddr = game:GetService("Players").LocalPlayer.Data.DevilFruit.Value
