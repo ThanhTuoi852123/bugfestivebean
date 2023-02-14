@@ -192,8 +192,8 @@ end)
         end
     end)
 spawn(function()
-    while wait(1000) do
-        if GHM1() == true and tuoidz12() == true then
+    while wait(100) do
+        if GHM1() == true then
 	  tuoiwebhook()
         tuoidz3()
         wait(2)
