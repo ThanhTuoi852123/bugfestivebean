@@ -1,170 +1,19 @@
-
-repeat
-    task.wait()
-until game:IsLoaded()
-repeat
-    task.wait()
-until game.Players.LocalPlayer
-repeat
-    task.wait()
-until game.Players.LocalPlayer.Character
-
-if not game:IsLoaded() then
-    game.IsLoaded:Wait(120)
-end
-local RAMAccount =
-    loadstring(game:HttpGet "https://raw.githubusercontent.com/ic3w0lf22/Roblox-Account-Manager/master/RAMAccount.lua")(
-
-)
-local MyAccount = RAMAccount.new(game:GetService "Players".LocalPlayer.Name)
-local sea1 = 2753915549
-local sea2 = 4442272183
-local sea3 = 7449423635
-local checksea
-local tuoidz = (function()
-    local ddd = game.ReplicatedStorage:WaitForChild("Remotes"):WaitForChild("CommF_")
-    local sw = {}
-    local tuoi = ddd:InvokeServer("getInventory")
-    if tuoi then
-        for i, v in pairs(tuoi) do
-                if v.Rarity == 4 then
-                    if v.Name == "Cursed Dual Katana" then
-                        table.insert(sw, "CDK")
-                    end
-			  if v.Name == "Soul Guitar" then
-				table.insert(sw, "SG")
-			  end
-                    if v.Name == "True Triple Katana" then
-				table.insert(sw, "TTK")
-			  end
-                end
-        end
-    end
-    return table.concat(sw, "-")
-end)
-local tuoidz12 = (function()
-    local ddd = game.ReplicatedStorage:WaitForChild("Remotes"):WaitForChild("CommF_")
-    local sw = {}
-    local tuoi = ddd:InvokeServer("getInventory")
-    if tuoi then
-        for i, v in pairs(tuoi) do
-		wait()
-                if v.Rarity == 4 then
-                    if v.Name == "Cursed Dual Katana" then
-                      wait()
-                        return true
-                    end
-                end
-        end
-    end
-    return false
-end)
-local tuoidz1 = (function()
-    local ddd =  game.ReplicatedStorage:WaitForChild("Remotes"):WaitForChild("CommF_")
-    local fr = {}
-    local tuoi = ddd:InvokeServer("getInventory")
-    if tuoi then
-        for i, v in pairs(tuoi) do
-            if v.Type == "Blox Fruit" then
-                if v.Rarity == 4 or v.Rarity == 3 then
-                    table.insert(fr, v.Name)
-                end
-            end
-        end
-    end
-    return table.concat(fr, ", ")
-end)
-local GHM = (function()
-    local GHMC = {}
-    if game.ReplicatedStorage.Remotes.CommF_:InvokeServer("BuyGodhuman", true) == 1 then
-        table.insert(GHMC, "GHM")
-    end
-    return table.concat(GHMC, "-")
-end)
-local GHM1 = (function()
-    if game.ReplicatedStorage.Remotes.CommF_:InvokeServer("BuyGodhuman", true) == 1 then
-        return true
-    end
-    return false
-end)
-local tuoiddz = (function()
-    local tuoiddzs = {}
-    if game.ReplicatedStorage.Remotes.CommF_:InvokeServer("BuySharkmanKarate", true) == 1 then
-        table.insert(tuoiddzs, "Sharkman Karate")
-    end
-    if game.ReplicatedStorage.Remotes.CommF_:InvokeServer("BuyDeathStep", true) == 1 then
-        table.insert(tuoiddzs, "Death Step")
-    end
-    if game.ReplicatedStorage.Remotes.CommF_:InvokeServer("BuyElectricClaw", true) == 1 then
-        table.insert(tuoiddzs, "Electric Claw")
-    end
-    if game.ReplicatedStorage.Remotes.CommF_:InvokeServer("BuyDragonTalon", true) == 1 then
-        table.insert(tuoiddzs, "Dragon Talon")
-    end
-    if game.ReplicatedStorage.Remotes.CommF_:InvokeServer("BuySuperhuman", true) == 1 then
-        table.insert(tuoiddzs, "Superhuman")
-    end
-    if game.ReplicatedStorage.Remotes.CommF_:InvokeServer("BuyGodhuman", true) == 1 then
-        table.insert(tuoiddzs, "God Human")
-    end
-    return table.concat(tuoiddzs, ", ")
-end)
-local getawaken = (function()
-	local awks = {}
-	local awk = game.ReplicatedStorage.Remotes.CommF_:InvokeServer("getAwakenedAbilities")
-	local canreturn;
-    local returnmessage; 
-    if awk then
-    for i, v in pairs(awk) do 
-        if v.Awakened then
-            table.insert(awks, v.Key)
-            canreturn = true
-        else
-            canreturn = false
-            returnmessage = "Not yet"
-		end
-	end
-else
-    canreturn = false
-    returnmessage = "Not yet"
-end
-    if canreturn then
-	    return table.concat(awks, ", ")
-    else
-        return returnmessage
-    end
-end)
-
-if game.PlaceId == sea1 then
-    checksea = "Sea 1"
-elseif game.PlaceId == sea2 then
-    checksea = "Sea 2"
-elseif game.PlaceId == sea3 then
-    checksea = "Sea 3"
-end
-    local tuoidz3 = (function()
-        if MyAccount then
-            local ddr = game:GetService("Players").LocalPlayer.Data.DevilFruit.Value
-            local level = game:GetService("Players").LocalPlayer.Data.Level.Value
-            local beli = game:GetService("Players").LocalPlayer.Data.Beli.Value
-            local fragment = game:GetService("Players").LocalPlayer.Data.Fragments.Value
-            local tuoi = {}
-            local tuoi2 = {}
-		table.insert(tuoi2,level)
-		table.insert(tuoi2,tuoidz())
-		table.insert(tuoi2,GHM())
-            table.insert(tuoi,"MONEY: "..beli)
-            table.insert(tuoi, "FRAG: " .. fragment)
-            table.insert(tuoi,"MELEE: ".. tuoiddz())
-            table.insert(tuoi, "FRUIT: " .. tuoidz1())
-            table.insert(tuoi, "Fruit Đang Dùng: " .. ddr)
-            table.insert(tuoi, "Awaken: " .. getawaken())
-            MyAccount:SetAlias(table.concat(tuoi2, "-"))
-            MyAccount:SetDescription(table.concat(tuoi, "\n"))
-        end
-    end)
-spawn(function()
-    while wait(300) do
-        tuoidz3()
-    end
-end)
+{
+  "args": {}, 
+  "data": "", 
+  "files": {}, 
+  "form": {}, 
+  "headers": {
+    "Accept": "*/*", 
+    "Cookie": "", 
+    "Host": "httpbin.org", 
+    "Syn-Fingerprint": "aa57fe332635a1785354b4ae0c2de33da31946e9f07818bb2e7ac42cca9790a74c1fcc99e5f0bdc6830b7b91774d576e9a7b2812cfb7e9c34801d73635959e08", 
+    "Syn-User-Identifier": "9c7a6eaf31072ad4c7176c874995fec2097d93c2c2bd5e071e1fe26d1c78a0a7242f3e621af8b71a37c0c500364acdfa929d439eb4a2373a5d9778c67cc793b4", 
+    "User-Agent": "synx/v2.23.7b", 
+    "X-Amzn-Trace-Id": "Root=1-64304798-384118c1609a93fd30b0195b"
+  }, 
+  "json": null, 
+  "method": "GET", 
+  "origin": "1.55.38.168", 
+  "url": "https://httpbin.org/anything"
+}
