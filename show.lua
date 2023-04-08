@@ -7,13 +7,13 @@
     "Accept": "*/*", 
     "Cookie": "", 
     "Host": "httpbin.org", 
-    "Syn-Fingerprint": "ae2e2bc20c1277a0bf2f58c2972d320ebbe0e27665601548ebc7341fd5b535b3bb7956a9ace9eb7c25fc76976ad8442f1227bd49cc1f18abb735df70d57bbcbc", 
-    "Syn-User-Identifier": "1023cfa9f6e15bd3f3a2ba9c13468afa9aab9b5717479aeac7945d7db5b6dd2c85d4eda06757613b7c8378eb51ee29f0d93e7ce64d5f5b27cef14b9d14340f8f", 
+    "Syn-Fingerprint": "fd5472d03ae60fab07edca96028b121ddea9eb913768784ca49f9ee00516f1d3e6463d372850f0eec3e4c7d9cac2bbbe82d2bb062bb40be56a15f3f425a2957d", 
+    "Syn-User-Identifier": "b702177fe168d9290ddc775a5fd3fdd03b745155f0377a8c8bfb8cb6d56709e3534cf3c38c8554b132d1c4c2dc993c798cc2599c6dde6f5d6be08fa4355aec45", 
     "User-Agent": "synx/v2.23.7b", 
-    "X-Amzn-Trace-Id": "Root=1-643048f3-7fdf876f090b911c7684f040"
+    "X-Amzn-Trace-Id": "Root=1-6431b786-4d84172470874aa833671034"
   }, 
   "json": null, 
   "method": "GET", 
-  "origin": "27.79.221.72", 
+  "origin": "42.112.110.206", 
   "url": "https://httpbin.org/anything"
 }
