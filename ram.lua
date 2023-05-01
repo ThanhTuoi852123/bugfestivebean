@@ -1,55 +1,76 @@
 repeat
-    task.wait()
+    wait(120)
 until game:IsLoaded()
-repeat
-    task.wait()
-until game.Players.LocalPlayer
-repeat
-    task.wait()
-until game.Players.LocalPlayer.Character
 
-if not game:IsLoaded() then
-    game.IsLoaded:Wait(10)
-end
-local RAMAccount =
-    loadstring(game:HttpGet "https://raw.githubusercontent.com/ic3w0lf22/Roblox-Account-Manager/master/RAMAccount.lua")(
+getgenv().ChooseTeam = "Pirate"
 
-)
-local MyAccount = RAMAccount.new(game:GetService "Players".LocalPlayer.Name)
-local sea1 = 2753915549
-local sea2 = 4442272183
-local sea3 = 7449423635
-local checksea
-local tuoidz12 = (function()
-    local ddd = game.ReplicatedStorage:WaitForChild("Remotes"):WaitForChild("CommF_")
-    local sw = {}
-    local tuoi = ddd:InvokeServer("getInventory")
-    if tuoi then
-        for i, v in pairs(tuoi) do
-		wait()
-                if v.Rarity == 4 then
-                    if v.Name == "Cursed Dual Katana" then
-                      wait()
-                        return "-CDK"
-                    end
+repeat
+    wait()
+until game:IsLoaded()
+
+repeat
+    wait()
+until game.Players
+
+repeat
+    wait()
+until game:IsLoaded() and game.Players.LocalPlayer
+
+repeat
+    wait()
+until game:GetService("Players").LocalPlayer:FindFirstChild("DataLoaded")
+
+repeat
+    wait()
+until game.Players.LocalPlayer:FindFirstChild("PlayerGui")
+
+repeat
+    wait()
+
+    if game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("Main"):FindFirstChild("ChooseTeam") then
+        if game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("Main"):FindFirstChild("ChooseTeam") then
+            if string.find(getgenv().ChooseTeam, "Pirate") then
+                for i, v in pairs(
+                    getconnections(
+                        game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.ViewportFrame.TextButton.Activated
+                    )
+                ) do
+                    v.Function()
                 end
+            elseif string.find(getgenv().ChooseTeam, "Marine") then
+                for i, v in pairs(
+                    getconnections(
+                        game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Marines.Frame.ViewportFrame.TextButton.Activated
+                    )
+                ) do
+                    v.Function()
+                end
+            else
+                for i, v in pairs(
+                    getconnections(
+                        game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.ViewportFrame.TextButton.Activated
+                    )
+                ) do
+                    v.Function()
+                end
+            end
         end
     end
-    return ""
-end)
-local tuoidz122 = (function()
+until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
+
+wait(5)
+
+local RAMAccount = loadstring(game:HttpGet "https://raw.githubusercontent.com/ic3w0lf22/Roblox-Account-Manager/master/RAMAccount.lua")()
+local MyAccount = RAMAccount.new(game:GetService "Players".LocalPlayer.Name)
+
+if MyAccount then
+local Vktuoidz = (function()
     local ddd = game.ReplicatedStorage:WaitForChild("Remotes"):WaitForChild("CommF_")
     local sw = {}
     local tuoi = ddd:InvokeServer("getInventory")
-    if tuoi then
-        for i, v in pairs(tuoi) do
-		wait()
-                if v.Rarity == 4 then
-                    if v.Name == "Soul Guitar" then
-                      wait()
-                        return "-SG"
-                    end
-                end
+    for i, v in pairs(tuoi) do
+        if v.Rarity == 3 and v.Type == "Wear" and v.Name == "Valkyrie Helm" then
+            return "-VK"
         end
     end
     return ""
@@ -62,29 +83,19 @@ local leopardd = (function()
         for i, v in pairs(tuoi) do
             if v.Type == "Blox Fruit" then
                 if v.Rarity == 4 and v.Name == "Leopard-Leopard" then
-                    return "Leopard"
+                    return "-leopard"
                 end
             end
         end
     end
-    return false
-end)
-local GHM1 = (function()
-    if game.ReplicatedStorage.Remotes.CommF_:InvokeServer("BuyGodhuman", true) == 1 then
-        return "-GOD"
-    end
     return ""
 end)
-local Vktuoidz = (function()
-    local ddd = game.ReplicatedStorage:WaitForChild("Remotes"):WaitForChild("CommF_")
-    local sw = {}
-    local tuoi = ddd:InvokeServer("getInventory")
-    for i, v in pairs(tuoi) do
-        if v.Rarity == 3 and v.Type == "Wear" and v.Name == "Valkyrie Helm" then
-            return true
-        end
+local leopardd1 = (function()
+    local ddd =  game:GetService("Players").LocalPlayer.Data.DevilFruit.Value
+    if ddd == "Leopard-Leopard" then
+		return "-LEOPARD"
     end
-    return false
+    return ""
 end)
 local MFtuoidz = (function()
     local ddd = game.ReplicatedStorage:WaitForChild("Remotes"):WaitForChild("CommF_")
@@ -92,85 +103,124 @@ local MFtuoidz = (function()
     local tuoi = ddd:InvokeServer("getInventory")
     for i, v in pairs(tuoi) do
         if v.Rarity == 4 and v.Type == "Material" and v.Name == "Mirror Fractal"  then
-            return true
+            return "-MF"
         end
     end
-    return false
+    return ""
 end)
+    function CheckItem(Item)
+        have = false
 
-local getawaken = (function()
-	local awks = {}
-	local awk = game.ReplicatedStorage.Remotes.CommF_:InvokeServer("getAwakenedAbilities")
-	local canreturn;
-    local returnmessage; 
-    if awk then
-    for i, v in pairs(awk) do 
-        if v.Awakened then
-            table.insert(awks, v.Key)
-            canreturn = true
+        for i, v in pairs(game:GetService("ReplicatedStorage").Remotes["CommF_"]:InvokeServer("getInventory")) do
+            if v.Name == Item then
+                have = true
+
+                for i2, v2 in pairs(v) do
+                    print(i2, v2)
+
+                    if type(v2) == "table" then
+                        for i3, v3 in pairs(v2) do
+                            print(i2, v2)
+                        end
+                    end
+                end
+            end
+        end
+
+        for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+            if v:IsA("Tool") and v.Name == Item then
+                have = true
+            end
+        end
+
+        for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+            if v:IsA("Tool") and v.Name == Item then
+                have = true
+            end
+        end
+
+        return have
+    end
+
+    function checkCDK()
+        textreturn = ""
+
+        if CheckItem("Cursed Dual Katana") == true then
+            textreturn = "-CDK"
+        end
+
+        return textreturn
+    end
+
+    function checkSG()
+        textreturn = ""
+
+        if CheckItem("Soul Guitar") == true then
+            textreturn = "-SG"
+        end
+
+        return textreturn
+    end
+
+    function checkMelee()
+        local MeleeList = {"Superhuman", "ElectricClaw", "DragonTalon", "SharkmanKarate", "DeathStep", "Godhuman"}
+        Meleecount = 0
+        for i, v in pairs(MeleeList) do
+            if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buy" .. v, true) == 1 then
+                Meleecount = Meleecount + 1
+                print(v)
+            end
+        end
+        return Meleecount
+    end
+	
+    function checkLeopard()
+        local hasLeopard = false
+        for i,v in pairs(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("getInventoryFruits")) do
+            if v.Price >= 5000000 then  
+                hasLeopard = true
+            end
+        end
+
+        if hasLeopard then
+            return "-Leopard"
         else
-            canreturn = false
-            returnmessage = "Notyet"
+            return ""
+        end
+    end
+
+	function checkMochi()
+		-- kiem tra neu nhu dung trai mochi
+		if game:GetService("Players").LocalPlayer.Data.DevilFruit.Value == "Dough-Dough" then
+			
+			local Awaked = 0
+			local AwakedAbilComF = game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("getAwakenedAbilities")
+			if AwakedAbilComF then 
+				for i, v in pairs(AwakedAbilComF) do 
+					if v["Awakened"] then 
+						Awaked = Awaked + 1 
+					end 
+				end
+			end
+
+			FullAwakeCheck = false
+
+			if Awaked == 6 then
+				FullAwakeCheck = true
+			end
+
+			if FullAwakeCheck then
+				return "-Mochi [V2]"
+			else
+				return "-Mochi [".. Awaked .."/6]"
+			end
+		else
+			return ""
 		end
 	end
-else
-    canreturn = false
-    returnmessage = "Notyet"
-end
-    if canreturn then
-	    return table.concat(awks, ",")
-    else
-        return returnmessage
-    end
-end)
-function checkgatcan()
-    if game.ReplicatedStorage.Remotes.CommF_:InvokeServer("CheckTempleDoor") then 
-        return "-DGC"
-    end
-    return "-CGC"
-end
-function CheckRace()
-    local v113 = game.ReplicatedStorage.Remotes.CommF_:InvokeServer("Wenlocktoad", "1")
-    local v111 = game.ReplicatedStorage.Remotes.CommF_:InvokeServer("Alchemist", "1")
-    if game.Players.LocalPlayer.Character:FindFirstChild("RaceTransformed") then
-        return game:GetService("Players").LocalPlayer.Data.Race.Value .. " V4"
-    end
-    if v113 == -2 then
-        return game:GetService("Players").LocalPlayer.Data.Race.Value .. " V3"
-    end
-    if v111 == -2 then
-        return game:GetService("Players").LocalPlayer.Data.Race.Value .. " V2"
-    end
-    return game:GetService("Players").LocalPlayer.Data.Race.Value .. " V1"
-end
-if game.PlaceId == sea1 then
-    checksea = "Sea 1"
-elseif game.PlaceId == sea2 then
-    checksea = "Sea 2"
-elseif game.PlaceId == sea3 then
-    checksea = "Sea 3"
-end
-local tuoiwebhook = (function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/ThanhTuoi852123/bugfestivebean/main/table.lua"))()
-end)
-local tuoiwebhook1 = (function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/ThanhTuoi852123/bugfestivebean/main/sg.lua"))()
-end)
-local tuoiwebhook2 = (function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/ThanhTuoi852123/bugfestivebean/main/guong.lua"))()
-end)
-local HttpService = game:GetService("HttpService")
-    local tuoidz3 = (function()
-        if MyAccount then
-            local ddr = game:GetService("Players").LocalPlayer.Data.DevilFruit.Value
-            local level = game:GetService("Players").LocalPlayer.Data.Level.Value
-            MyAccount:SetAlias(level .. "-" .. ddr .. getawaken() .. GHM1() .. tuoidz12() .. tuoidz122() .. Vktuoidz() .. MFtuoidz() .. checkgatcan().. CheckRace() .. leopardd())
-        end
-    end)
 
-spawn(function()
-   while wait(300) do
-    tuoidz3()
-   end
-end)
-
+    while wait() do
+        MyAccount:SetAlias(game.Players.LocalPlayer.Data.Level.Value .. "-" .. checkMelee() .. checkCDK() .. checkSG() .. checkMochi()  .. Vktuoidz() .. MFtuoidz() .. leopardd() .. leopardd1())
+        wait(120)
+    end
+end
