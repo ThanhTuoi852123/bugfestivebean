@@ -108,6 +108,12 @@ local MFtuoidz = (function()
     end
     return ""
 end)
+local MUGUONG = (function()
+    if Vktuoidz() == "-VK" and MFtuoidz() == "-MF" then
+	return "-MG"			
+    end
+    return ""
+end)
     function CheckItem(Item)
         have = false
 
@@ -220,7 +226,7 @@ end)
 	end
 
     while wait() do
-        MyAccount:SetAlias(game.Players.LocalPlayer.Data.Level.Value .. "-" .. checkMelee() .. checkCDK() .. checkSG() .. checkMochi()  .. Vktuoidz() .. MFtuoidz() .. leopardd() .. leopardd1())
+        MyAccount:SetAlias(game.Players.LocalPlayer.Data.Level.Value .. "-" .. checkMelee() .. checkCDK() .. checkSG() .. checkMochi()  .. MUGUONG() .. leopardd() .. leopardd1())
         wait(120)
     end
 end
