@@ -73,7 +73,6 @@ local function checkMelee()
 	wait()
         if game.ReplicatedStorage.Remotes.CommF_:InvokeServer("Buy" .. melee, true) == 1 then
             meleeCount = meleeCount + 1
-            print(melee)
         end
     end
 
@@ -111,19 +110,19 @@ local function sendStatusToServer(key,status)
     local devilFruit = game.Players.LocalPlayer.Data.DevilFruit.Value or "None"
     local activatedFruit = devilFruit .. "-" .. getAwakenedAbilities()
     local meleeItems = checkMelee()
-    local itemString = ""
+    local itemString = meleeItems
 
+    if checkInventory("Cursed Dual Katana", 4, "Sword") then
+        itemString = itemString .. "-CDK"
+    end
+    if checkInventory("Soul Guitar", 4, "Gun") then
+        itemString = itemString .. "-SG"
+    end
     if checkInventory("Valkyrie Helm", 3, "Wear") then
         itemString = itemString .. "-VK"
     end
     if checkInventory("Mirror Fractal", 4, "Material") then
         itemString = itemString .. "-MF"
-    end
-    if checkInventory("Cursed Dual Katana", 4, nil) then
-        itemString = itemString .. "-CDK"
-    end
-    if checkInventory("Soul Guitar", 4, nil) then
-        itemString = itemString .. "-SG"
     end
     if checkInventory("Leopard-Leopard", 4, "Blox Fruit") then
         itemString = itemString .. "-Leopard"
@@ -131,12 +130,11 @@ local function sendStatusToServer(key,status)
     if checkInventory("Dough-Dough", 4, "Blox Fruit") then
         itemString = itemString .. "-Dough"
     end
-
     local checkRace = getRaceStatus() .. checkTempleDoor()
 
     local requestData = {
         key = scriptKey,
-        Account = playerName,
+        Accout = playerName,
         Level = playerLevel,
         ActivateFruit = activatedFruit,
         Item = itemString,
@@ -145,7 +143,7 @@ local function sendStatusToServer(key,status)
     }
 
     local httpRequest = (syn and syn.request) or http and http.request or http_request or (fluxus and fluxus.request) or request
-    httpRequest({
+    local response = httpRequest({
         Url = url,
         Method = "POST",
         Headers = {
@@ -153,12 +151,13 @@ local function sendStatusToServer(key,status)
         },
         Body = game:GetService("HttpService"):JSONEncode(requestData)
     })
-end
+    return response
+end 
 
 spawn(function()
     while wait(10) do
 	  pcall(function()
-        sendStatusToServer(script_key,"Online")
+        sendStatusToServer(script_key,"ONLINE")
         wait(120)
 	  end)
     end
@@ -166,5 +165,5 @@ end)
 
 local player = game.Players.LocalPlayer
 player.CharacterRemoving:Connect(function()
-    sendStatusToServer(script_key,"Offline")
+    sendStatusToServer(script_key,"OFFLINE")
 end)
