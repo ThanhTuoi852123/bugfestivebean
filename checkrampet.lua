@@ -15,7 +15,7 @@ end
 
 local Library = require(game.ReplicatedStorage.Library)
 local tuoidz = "Get Diamond Mine Collpase Time"
-hookfunction(debug.getupvalue(Library.Signal.Invoke, 1),function() return true end)
+
 function Abbreviate(x)
     local abbreviations = {
         "K", -- 4 digits
