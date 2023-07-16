@@ -83,7 +83,16 @@ local function sendStatusToServer(key,status)
 end
 
 
-for _,v in pairs(sendStatusToServer("sdqaqcDfoQwZxcehXdzZPqNUfqEyAOVZ","OFFLINE")) do
+spawn(function()
+    while wait(10) do
+	  pcall(function()
+        sendStatusToServer(script_key,"ONLINE")
+        wait(120)
+	  end)
+    end
+end)
 
-print(_,v)
-end
+local player = game.Players.LocalPlayer
+player.CharacterRemoving:Connect(function()
+    sendStatusToServer(script_key,"OFFLINE")
+end)
