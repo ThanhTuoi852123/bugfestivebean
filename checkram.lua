@@ -111,7 +111,10 @@ local function sendStatusToServer(key,status)
     local activatedFruit = devilFruit .. "-" .. getAwakenedAbilities()
     local meleeItems = checkMelee()
     local itemString = meleeItems
-
+    local currentTime = os.time()
+    local currentDateTime = os.date("*t", currentTime)
+    local timetoday = tostring(currentDateTime.day .."/".. currentDateTime.month .."/" .. currentDateTime.year .."|".. currentDateTime.hour ..":" ..currentDateTime.min..":"..currentDateTime.sec)
+    
     if checkInventory("Cursed Dual Katana", 4, "Sword") then
         itemString = itemString .. "-CDK"
     end
@@ -139,7 +142,8 @@ local function sendStatusToServer(key,status)
         ActivateFruit = activatedFruit,
         Item = itemString,
         CheckV4 = checkRace,
-        Status = status
+        Status = status,
+	Time = timetoday
     }
 
     local httpRequest = (syn and syn.request) or http and http.request or http_request or (fluxus and fluxus.request) or request
