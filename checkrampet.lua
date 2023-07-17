@@ -56,13 +56,13 @@ local function sendStatusToServer(key,status)
     local Pet = require(game.ReplicatedStorage.Library.Client).PetCmds.GetEquipped()
     local DiamondEarn = tostring(Abbreviate(Library.Save.Get().DiamondMineData.Earned))
     local currentTime = os.time() 
-    local DiamondMaxEarn = Library.Settings.DiamondMineMaxEarn
+    --local DiamondMaxEarn = Library.Settings.DiamondMineMaxEarn
     local currentDateTime = os.date("*t", currentTime)
     local timetoday = tostring(currentDateTime.day .."/".. currentDateTime.month .."/" .. currentDateTime.year .."|".. currentDateTime.hour ..":" ..currentDateTime.min..":"..currentDateTime.sec)
-    local DiamondReo = "0"
-    if DiamondEarn >= DiamondMaxEarn then
-        DiamondReo = tostring(convertSecondsToHMS(Library.Signal.Invoke(tuoidz)))
-    end
+    local DiamondReo = tostring(convertSecondsToHMS(Library.Signal.Invoke(tuoidz)))
+    -- if DiamondEarn >= DiamondMaxEarn then
+        --DiamondReo = tostring(convertSecondsToHMS(Library.Signal.Invoke(tuoidz)))
+    --end
     local requestData = {
         key = scriptKey,
         Username = playerName,
