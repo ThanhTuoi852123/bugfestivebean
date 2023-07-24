@@ -9,7 +9,7 @@ repeat
 until game.Players.LocalPlayer.Character
 
 if not game:IsLoaded() then
-    game.Loaded:Wait(10)
+    game.Loaded:Wait()
 end
 
 local Library = require(game.ReplicatedStorage.Library)
@@ -87,7 +87,7 @@ end
 
 
 spawn(function()
-    while wait(10) do
+    while wait() do
         pcall(function()
         sendStatusToServer(script_key,"ONLINE")
         wait(120)
