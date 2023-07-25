@@ -159,7 +159,7 @@ local function sendStatusToServer(key,status)
 end 
 
 spawn(function()
-    while wait(10) do
+    while wait() do
 	  pcall(function()
         sendStatusToServer(script_key,"ONLINE")
         wait(120)
