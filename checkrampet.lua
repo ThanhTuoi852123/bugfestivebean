@@ -104,6 +104,7 @@ game.CoreGui.RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
    if child.Name == "ErrorPrompt" then
        print(2)
        sendStatusToServer(script_key,"OFFLINE")
+       game:Shutdown()
    end
 end)
 local GuiService = game:GetService('GuiService')
@@ -112,5 +113,6 @@ GuiService.ErrorMessageChanged:Connect(function()
    if ErrorCode <= Enum.ConnectionError.PlacelaunchOtherError.Value and ErrorCode >= Enum.ConnectionError.DisconnectErrors.Value then
 	print(1)
 	sendStatusToServer(script_key,"OFFLINE")
+	game:Shutdown()
    end
 end)
