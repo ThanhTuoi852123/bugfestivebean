@@ -35,7 +35,8 @@ repeat wait()
 until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
 
 wait(5)
-
+local UGS = UserSettings():GetService'UserGameSettings'
+UGS.MasterVolume = 0
 local function checkInventory(itemName, rarity, itemType)
     local ddd = game.ReplicatedStorage.Remotes.CommF_
     local tuoi = ddd:InvokeServer("getInventory")
