@@ -105,6 +105,7 @@ local GuiService = game:GetService('GuiService')
 GuiService.ErrorMessageChanged:Connect(function()
    local ErrorCode = GuiService:GetErrorCode().Value
    if ErrorCode <= Enum.ConnectionError.PlacelaunchOtherError.Value and ErrorCode >= Enum.ConnectionError.DisconnectErrors.Value then
-	sendStatusToServer(script_key,"OFFLINE")		
+	print(1)
+	sendStatusToServer(script_key,"OFFLINE")
    end
 end)
