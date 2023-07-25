@@ -14,7 +14,8 @@ end
 
 local Library = require(game.ReplicatedStorage.Library)
 local tuoidz = "Get Diamond Mine Collpase Time"
-
+local UGS = UserSettings():GetService'UserGameSettings'
+UGS.MasterVolume = 0
 function Abbreviate(x)
     local abbreviations = {
         "K", -- 4 digits
