@@ -100,7 +100,12 @@ local player = game.Players.LocalPlayer
 player.CharacterRemoving:Connect(function()
     sendStatusToServer(script_key,"OFFLINE")
 end)
-
+game.CoreGui.RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
+   if child.Name == "ErrorPrompt" then
+       print(2)
+       sendStatusToServer(script_key,"OFFLINE")
+   end
+end)
 local GuiService = game:GetService('GuiService')
 GuiService.ErrorMessageChanged:Connect(function()
    local ErrorCode = GuiService:GetErrorCode().Value
