@@ -167,11 +167,13 @@ spawn(function()
 	  end)
     end
 end)
-
+spawn(function()
 local player = game.Players.LocalPlayer
 player.CharacterRemoving:Connect(function()
     sendStatusToServer(script_key,"OFFLINE")
 end)
+end)
+spawn(function()
 game.CoreGui.RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
    if child.Name == "ErrorPrompt" then
        print(2)
@@ -179,6 +181,8 @@ game.CoreGui.RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
        game:Shutdown()
    end
 end)
+end)
+spawn(function()
 local GuiService = game:GetService('GuiService')
 GuiService.ErrorMessageChanged:Connect(function()
    local ErrorCode = GuiService:GetErrorCode().Value
@@ -187,5 +191,6 @@ GuiService.ErrorMessageChanged:Connect(function()
 	sendStatusToServer(script_key,"OFFLINE")
 	game:Shutdown()
    end
+end)
 end)
 
