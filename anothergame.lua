@@ -22,16 +22,21 @@ local response = HttpRequest(
 )
 end
 local sss = true
+local GuiService = game:GetService('GuiService')
 while sss do
     pcall(function()
         	accountonl()
         	wait(60)
     end)
+    local ErrorCode = GuiService:GetErrorCode().Value
+    if ErrorCode >= Enum.ConnectionError.DisconnectErrors.Value then
+		start = false
+   end
     for _,v in pairs(game.CoreGui.RobloxPromptGui.promptOverlay:GetChildren()) do
 		  if v.Name == "ErrorPrompt" then
 			  sss = false
 		  end
-	  end
+    end
 end
 game.CoreGui.RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
    if child.Name == "ErrorPrompt" then
