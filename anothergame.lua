@@ -26,8 +26,25 @@ local GuiService = game:GetService('GuiService')
 spawn(function()
 while true do
  --   pcall(function()
-        accountonl("ONLINE")
+        local data = {
+        name = game.Players.LocalPlayer.Name,
+        status = "ONLINE"
+        }
+
+        local response = HttpRequest(
+           {
+               Url = "http://localhost:5000/post",  -- This website helps debug HTTP requests
+               Method = "POST",
+               Headers = {
+                   ["Content-Type"] = "application/json"  -- When sending JSON, set this!
+               },
+               Body = HttpService:JSONEncode(data)
+           }
+        )
         print("Dang chay")
+        for _,v in pairs(response) do
+            print(_,v)
+        end
 --    end)
     wait(60)
 end
