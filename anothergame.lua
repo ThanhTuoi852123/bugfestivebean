@@ -30,7 +30,7 @@ while true do
         name = game.Players.LocalPlayer.Name,
         status = "ONLINE"
         }
-
+        print("Dang chay 1")
         local response = HttpRequest(
            {
                Url = "http://localhost:5000/post",  -- This website helps debug HTTP requests
@@ -46,7 +46,7 @@ while true do
             print(_,v)
         end
 --    end)
-    wait(60)
+        wait(60)
 end
 end)
 print("ONLINE")
