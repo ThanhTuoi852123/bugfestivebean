@@ -46,7 +46,7 @@ while true do
             print(_,v)
         end
 --    end)
-        wait(60)
+        wait(10)
 end
 end)
 print("ONLINE")
