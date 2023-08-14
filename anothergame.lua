@@ -1,7 +1,7 @@
 repeat wait() until game:IsLoaded()
 repeat wait() until game.Players.LocalPlayer and game:IsLoaded()
 repeat wait() until game.Players.LocalPlayer.Character
-
+wait(10)
 local HttpRequest = (syn and syn.request) or http and http.request or http_request or (fluxus and fluxus.request) or request
 local HttpService = game:GetService("HttpService")
 function accountonl(status)
