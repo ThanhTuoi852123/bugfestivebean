@@ -23,26 +23,9 @@ local response = HttpRequest(
 end
 local sss = true
 local GuiService = game:GetService('GuiService')
-while sss do
+while true do
     pcall(function()
-        	accountonl("ONLINE")
-        	wait(60)
+        accountonl("ONLINE")
     end)
-    local ErrorCode = GuiService:GetErrorCode().Value
-    if ErrorCode >= Enum.ConnectionError.DisconnectErrors.Value then
-		start = false
-		--accountonl("OFFLINE")
-   end
-    for _,v in pairs(game.CoreGui.RobloxPromptGui.promptOverlay:GetChildren()) do
-		  if v.Name == "ErrorPrompt" then
-			sss = false
-			--accountonl("OFFLINE")
-		  end
-    end
+    wait(60)
 end
-game.CoreGui.RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
-   if child.Name == "ErrorPrompt" then
-       sss = false
-       --accountonl("OFFLINE")
-   end
-end)
