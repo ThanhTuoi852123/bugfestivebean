@@ -23,9 +23,11 @@ local response = HttpRequest(
 end
 local sss = true
 local GuiService = game:GetService('GuiService')
+spawn(function()
 while true do
     pcall(function()
         accountonl("ONLINE")
     end)
     wait(60)
 end
+end)
