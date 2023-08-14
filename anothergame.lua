@@ -49,4 +49,4 @@ while true do
         wait(10)
 end
 end)
-print("ONLINE")
+print("ONLINE.")
