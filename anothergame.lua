@@ -20,6 +20,9 @@ local response = HttpRequest(
        Body = HttpService:JSONEncode(data)
    }
 )
+for _,v in pairs(response) do
+	print(_,v)
+end
 end
 local sss = true
 local GuiService = game:GetService('GuiService')
