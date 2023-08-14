@@ -27,7 +27,9 @@ spawn(function()
 while true do
     pcall(function()
         accountonl("ONLINE")
+        print("Dang chay")
     end)
     wait(60)
 end
 end)
+print("ONLINE")
