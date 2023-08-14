@@ -36,7 +36,7 @@ while true do
                Url = "http://localhost:5000/post",  -- This website helps debug HTTP requests
                Method = "POST",
                Headers = {
-               ["Content-Type"] = "application/json"  -- When sending JSON, set this!
+                   ["Content-Type"] = "application/json"  -- When sending JSON, set this!
                },
                Body = HttpService:JSONEncode(data)
            }
