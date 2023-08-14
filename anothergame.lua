@@ -27,8 +27,8 @@ spawn(function()
 while true do
  --   pcall(function()
         local data = {
-        name = game.Players.LocalPlayer.Name,
-        status = "ONLINE"
+            name = tostring(game.Players.LocalPlayer.Name),
+            status = "ONLINE"
         }
         print("Dang chay 1")
         local response = HttpRequest(
