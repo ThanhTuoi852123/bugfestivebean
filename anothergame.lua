@@ -25,10 +25,10 @@ local sss = true
 local GuiService = game:GetService('GuiService')
 spawn(function()
 while true do
-    pcall(function()
+ --   pcall(function()
         accountonl("ONLINE")
         print("Dang chay")
-    end)
+--    end)
     wait(60)
 end
 end)
