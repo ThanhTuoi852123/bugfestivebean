@@ -4,6 +4,6 @@ elseif game.PlaceId == 6284583030 then
 loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/52ef01653d6d7594a730611f9bcd3773.lua"))()
 end
 else
-loadstring(game:HttpGet("https://raw.githubusercontent.com/ThanhTuoi852123/bugfestivebean/main/anothergame.lua"))()
+loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/fa5f266798202a95c64a7fc43a4c0672.lua"))()
 end
 
