@@ -26,6 +26,9 @@ spawn(function()
     while wait(60) do
 	for _,v in pairs(game.CoreGui.RobloxPromptGui.promptOverlay:GetChildren()) do
 		if v.Name == "ErrorPrompt" then
+			wait(1)
+                        if string.find(child.MessageArea.ErrorFrame.ErrorMessage.Text,"Banned") then 						writefile("Tuoidz.txt","Done") 
+       			end
 			start = false
   			getgenv().StopUpdate = true
 		end
@@ -46,17 +49,26 @@ while wait(1) do
     end
 end
 end)
+
 spawn(function()
 for _,v in pairs(game.CoreGui.RobloxPromptGui.promptOverlay:GetChildren()) do
 	if v.Name == "ErrorPrompt" then
+		wait(1)
+		if string.find(child.MessageArea.ErrorFrame.ErrorMessage.Text,"Banned") then 						writefile("Tuoidz.txt","Done") 
+		end
 		start = false
+		getgenv().StopUpdate = true
 	end
 end
 end)
 game.CoreGui.RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
    if child.Name == "ErrorPrompt" then
+       wait(1)
+       if string.find(child.MessageArea.ErrorFrame.ErrorMessage.Text,"Banned") then 						writefile("Tuoidz.txt","Done") 
+       end
        start = false
+       getgenv().StopUpdate = true
    end
 end)
 
-print("CheckRAMOnline")
+print("Joining ONLINE")
