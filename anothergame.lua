@@ -27,7 +27,7 @@ spawn(function()
 	for _,v in pairs(game.CoreGui.RobloxPromptGui.promptOverlay:GetChildren()) do
 		if v.Name == "ErrorPrompt" then
 			wait(1)
-                        if string.find(child.MessageArea.ErrorFrame.ErrorMessage.Text,"Banned") then 						writefile("Tuoidz.txt","Done") 
+                        if string.find(child.MessageArea.ErrorFrame.ErrorMessage.Text:lower(),"banned") then 						writefile("Tuoidz.txt","Done") 
        			end
 			start = false
   			getgenv().StopUpdate = true
@@ -54,7 +54,7 @@ spawn(function()
 for _,v in pairs(game.CoreGui.RobloxPromptGui.promptOverlay:GetChildren()) do
 	if v.Name == "ErrorPrompt" then
 		wait(1)
-		if string.find(child.MessageArea.ErrorFrame.ErrorMessage.Text,"Banned") then 						writefile("Tuoidz.txt","Done") 
+		if string.find(child.MessageArea.ErrorFrame.ErrorMessage.Text:lower(),"banned") then 						writefile("Tuoidz.txt","Done") 
 		end
 		start = false
 		getgenv().StopUpdate = true
@@ -64,7 +64,7 @@ end)
 game.CoreGui.RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
    if child.Name == "ErrorPrompt" then
        wait(1)
-       if string.find(child.MessageArea.ErrorFrame.ErrorMessage.Text,"Banned") then 						writefile("Tuoidz.txt","Done") 
+       if string.find(child.MessageArea.ErrorFrame.ErrorMessage.Text:lower(),"banned") then 						writefile("Tuoidz.txt","Done") 
        end
        start = false
        getgenv().StopUpdate = true
